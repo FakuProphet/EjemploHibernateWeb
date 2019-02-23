@@ -14,7 +14,10 @@ public class Personal  implements java.io.Serializable {
      private String nombre;
      private String apellido;
      private int anioIngreso;
-
+     private boolean seleccionado;
+     
+     
+     
     public Personal() {
     }
 
@@ -24,6 +27,16 @@ public class Personal  implements java.io.Serializable {
        this.apellido = apellido;
        this.anioIngreso = anioIngreso;
     }
+
+    public boolean isSeleccionado() {
+        return seleccionado;
+    }
+
+    public void setSeleccionado(boolean seleccionado) {
+        this.seleccionado = seleccionado;
+    }
+    
+    
    
     public Integer getCodigo() {
         return this.codigo;

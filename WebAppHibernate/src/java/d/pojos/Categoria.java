@@ -14,10 +14,24 @@ public class Categoria  implements java.io.Serializable {
      private Integer codigo;
      private String nombre;
      private Set personals = new HashSet(0);
-
+     private boolean seleccionado;
+     
+     
+     
+     
+     
     public Categoria() {
     }
 
+    public boolean isSeleccionado() {
+        return seleccionado;
+    }
+
+    public void setSeleccionado(boolean seleccionado) {
+        this.seleccionado = seleccionado;
+    }
+
+    
 	
     public Categoria(String nombre) {
         this.nombre = nombre;
