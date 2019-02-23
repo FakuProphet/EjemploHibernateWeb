@@ -33,7 +33,7 @@ public class CategoriaBean {
         Session sesion = miSF.openSession();
         List<Categoria> miLista = sesion.createQuery("From Categoria").list();
         /*Otra forma de obtener la lista*/
-        List<Categoria> miLista2 = (List<Categoria>) sesion.createCriteria(Categoria.class);
+        List<Categoria> miLista2 = sesion.createCriteria(Categoria.class).list();
         
         return miLista;
         
