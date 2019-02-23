@@ -9,6 +9,7 @@
     </h:head>
     <h:body>
             <h:form id="form2">
+                
                 <p:dataTable value="#{cBean.listaCategorias}" var="c">
                 <p:column style="width: 5%">
                      <f:facet name="header"></f:facet>
@@ -26,7 +27,7 @@
                     <f:facet name="header"> DESCRIPCION</f:facet>
                     <h:outputText value="#{c.nombre}"/>
                 </p:column>
-            </p:dataTable>
+                </p:dataTable>
                 
                 <p:commandButton value="delete" actionListener="#{cBean.deleteCategoria()}"
                                  update="form2" icon="ui-icon-trash">
@@ -43,13 +44,15 @@
                 <p:growl showDetail="true" showSummary="true" />
             </h:form>
             <h:form id="form1">
-                <p:panelGrid columns="2">
+                <p:panelGrid columns="1">
                     <h:outputText value="Nombre Categoria"/>
                     <p:inputText value="#{cBean.categoria.nombre}" required="true"/>
-                    <h:outputText value=""/>
+                  
                     <p:commandButton value="Guardar" update=":form1, :form2" 
                                      icon="ui-icon-disk" actionListener="#{cBean.newCategoria()}"/>
+                    
                 </p:panelGrid>
+                
             </h:form>
     </h:body>
 </html>
