@@ -10,15 +10,36 @@
     <h:body>
             <h:form id="form2">
                 <p:dataTable value="#{cBean.listaCategorias}" var="c">
+                <p:column style="width: 5%">
+                     <f:facet name="header"></f:facet>
+                     <p:selectBooleanCheckbox value="#{c.seleccionado}"/>
+                </p:column>
+                
+                    
                 <p:column>
                     <f:facet name="header"> CODIGO</f:facet>
                     <h:outputText value="#{c.codigo}"/>
                 </p:column>
+                    
+                    
                 <p:column>
                     <f:facet name="header"> DESCRIPCION</f:facet>
                     <h:outputText value="#{c.nombre}"/>
                 </p:column>
             </p:dataTable>
+                
+                <p:commandButton value="delete" actionListener="#{cBean.deleteCategoria()}"
+                                 update="form2" icon="ui-icon-trash">
+                                <p:confirm header="Eliminar" 
+                                           message="Desea eliminar el/los elemento/s" 
+                                           icon="ui-icon-alert"/>
+                </p:commandButton>
+                
+                <p:confirmDialog global="true">
+                    <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" type="button" icon="ui-icon-check"></p:commandButton>
+                    <p:commandButton value="No" styleClass="ui-confirmdialog-no" type="button" icon="ui-icon-close"></p:commandButton>
+                </p:confirmDialog>
+                
                 <p:growl showDetail="true" showSummary="true" />
             </h:form>
             <h:form id="form1">
