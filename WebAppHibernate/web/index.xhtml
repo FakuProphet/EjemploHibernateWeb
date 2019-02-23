@@ -18,6 +18,13 @@
                     <h:outputText value="#{c.nombre}"/>
                 </h:column>
             </h:dataTable>
+            
+            <h:panelGrid columns="2">
+                <h:outputText value="Nombre Categoria"/>
+                <h:inputText value="#{cBean.nombre}" required="true"/>
+                <h:outputText value=""/>
+                <h:commandButton value="Guardar" action="#{cBean.newCategoria()}"/>
+            </h:panelGrid>
         </h:form>
     </h:body>
 </html>

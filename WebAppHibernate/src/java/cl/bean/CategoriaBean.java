@@ -12,6 +12,7 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -21,11 +22,22 @@ import org.hibernate.SessionFactory;
 @RequestScoped
 public class CategoriaBean {
 
-    /**
-     * Creates a new instance of CategoriaBean
-     */
+   
     public CategoriaBean() {
     }
+   
+    
+    private String nombre; 
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
     
     public List<Categoria> getListaCategorias(){
         
@@ -38,6 +50,18 @@ public class CategoriaBean {
         return miLista;
         
     }
+    
+    public String newCategoria(){
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction t = sesion.beginTransaction();
+        Categoria c = new Categoria(nombre);
+        sesion.saveOrUpdate(c);
+        t.commit();
+        return "index";
+    }
+    
     
     
 }
