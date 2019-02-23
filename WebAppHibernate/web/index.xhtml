@@ -2,30 +2,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:form>
-            <h:dataTable value="#{cBean.listaCategorias}" var="c" border="1">
-                <h:column>
+            <h:form id="form2">
+                <p:dataTable value="#{cBean.listaCategorias}" var="c">
+                <p:column>
                     <f:facet name="header"> CODIGO</f:facet>
                     <h:outputText value="#{c.codigo}"/>
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column>
                     <f:facet name="header"> DESCRIPCION</f:facet>
                     <h:outputText value="#{c.nombre}"/>
-                </h:column>
-            </h:dataTable>
-            
-            <h:panelGrid columns="2">
-                <h:outputText value="Nombre Categoria"/>
-                <h:inputText value="#{cBean.nombre}" required="true"/>
-                <h:outputText value=""/>
-                <h:commandButton value="Guardar" action="#{cBean.newCategoria()}"/>
-            </h:panelGrid>
-        </h:form>
+                </p:column>
+            </p:dataTable>
+                <p:growl showDetail="true" showSummary="true" />
+            </h:form>
+            <h:form id="form1">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Nombre Categoria"/>
+                    <p:inputText value="#{cBean.categoria.nombre}" required="true"/>
+                    <h:outputText value=""/>
+                    <p:commandButton value="Guardar" update=":form1, :form2" 
+                                     icon="ui-icon-disk" actionListener="#{cBean.newCategoria()}"/>
+                </p:panelGrid>
+            </h:form>
     </h:body>
 </html>
 

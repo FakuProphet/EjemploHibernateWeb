@@ -10,6 +10,8 @@ import d.pojos.Categoria;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -22,20 +24,25 @@ import org.hibernate.Transaction;
 @RequestScoped
 public class CategoriaBean {
 
+    private Categoria categoria; 
+    
    
     public CategoriaBean() {
+        categoria = new Categoria();
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
    
     
-    private String nombre; 
+    
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+   
     
     
     
@@ -56,9 +63,13 @@ public class CategoriaBean {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
         Transaction t = sesion.beginTransaction();
-        Categoria c = new Categoria(nombre);
+        Categoria c = new Categoria(categoria.getNombre());
         sesion.saveOrUpdate(c);
         t.commit();
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Mensaje","Categoria");
+        /*agregando mensaje a nuestro ambito de aplicacion*/
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        categoria.setNombre("");
         return "index";
     }
     
