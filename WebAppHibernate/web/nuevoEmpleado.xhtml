@@ -22,11 +22,10 @@
             <p:inputText value="" required="true"/>
             <p:outputLabel for="categoria" value="Categoria: " />
             
-            <p:selectOneMenu id="categoria" value="#{cBean.categoria.codigo}" style="width:208px">       
-                
+            <p:selectOneMenu id="categoria" value="#{cBean.categoria.codigo}" style="width:208px">
                 <f:selectItem itemLabel="Seleccionar Categoria" itemValue="" noSelectionOption="true" />
                 <f:selectItems value="#{cBean.listaCatCombo}" />
-                
+                <f:ajax execute="categoria" render="cSeleccionada"/>
             </p:selectOneMenu>
             
         </h:panelGrid>
