@@ -16,6 +16,7 @@ import javax.faces.context.FacesContext;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -69,7 +70,21 @@ public class CategoriaBean {
     }
     
     
-    
+    public void filaEvento(RowEditEvent e)
+    {   /* obtiene Texto u objeto actualizado*/
+        Categoria c = (Categoria) e.getObject();
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session se = sf.openSession();
+        Categoria seleccionada = (Categoria) se.get(Categoria.class, c.getCodigo()); 
+        seleccionada.setNombre(c.getNombre());
+        se.update(seleccionada);
+        se.beginTransaction().commit();
+        
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Mensaje","Categoria actualizada");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        cargarCategorias();
+        
+    }
     
     public String newCategoria(){
         

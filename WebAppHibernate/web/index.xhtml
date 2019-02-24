@@ -10,23 +10,39 @@
     <h:body>
             <h:form id="form2">
                 
-                <p:dataTable value="#{cBean.listaCategorias}" var="c">
-                <p:column style="width: 5%">
-                     <f:facet name="header"></f:facet>
+                <p:dataTable  editable="true" value="#{cBean.listaCategorias}" var="c">
+                
+                    <p:ajax event="rowEdit" listener="#{cBean.filaEvento}" update=":form2:msg"/>
+                    
+                    <p:column style="width: 5%">
                      <p:selectBooleanCheckbox value="#{c.seleccionado}"/>
-                </p:column>
+                    </p:column>
                 
                     
-                <p:column>
-                    <f:facet name="header"> CODIGO</f:facet>
+                    <p:column headerText="CODIGO">
+                   
                     <h:outputText value="#{c.codigo}"/>
-                </p:column>
+                    
+                    </p:column>
                     
                     
-                <p:column>
-                    <f:facet name="header"> DESCRIPCION</f:facet>
-                    <h:outputText value="#{c.nombre}"/>
-                </p:column>
+                    <p:column headerText="NOMBRE">
+                        
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <h:outputText value="#{c.nombre}"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{c.nombre}"/>
+                            </f:facet>
+                        </p:cellEditor>
+                    
+                    </p:column>
+                    
+                    <p:column>
+                        <p:rowEditor/>
+                    </p:column>
+                
                 </p:dataTable>
                 
                 <p:commandButton value="delete" actionListener="#{cBean.deleteCategoria()}"
@@ -41,7 +57,7 @@
                     <p:commandButton value="No" styleClass="ui-confirmdialog-no" type="button" icon="ui-icon-close"></p:commandButton>
                 </p:confirmDialog>
                 
-                <p:growl showDetail="true" showSummary="true" />
+                <p:growl id="msg" showDetail="true" showSummary="true" />
             </h:form>
             <h:form id="form1">
                 <p:panelGrid columns="1">
