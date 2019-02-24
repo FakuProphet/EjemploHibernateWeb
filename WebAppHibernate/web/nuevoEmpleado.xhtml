@@ -1,17 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Nuevo empleado</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>Alta de empleado</div>
-        
-    </body>
-</html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+     <title>Facelet Title</title>
+</h:head>
+
+<h:body>
+    <h:form>
+    <p:growl id="msgs" showDetail="true" /> 
+    <p:panel header="ALTA DE EMPLEADO" style="margin-bottom:10px;">
+        <h:panelGrid columns="1" cellpadding="5">
+            <h:outputText value="Nombre"/>
+            <p:inputText value="" required="true"/>
+            <h:outputText value="Apellido"/>
+            <p:inputText value="" required="true"/>
+            <h:outputText value="Anio Ingreso"/>
+            <p:inputText value="" required="true"/>
+            <p:outputLabel for="categoria" value="Categoria: " />
+            <p:selectOneMenu id="categoria" value="" style="width:208px">       
+                <f:selectItem itemLabel="Seleccionar Categoria" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="" />
+            </p:selectOneMenu>
+        </h:panelGrid>
+        <p:separator /> 
+        <p:commandButton value="Registrar"  icon="pi pi-check" />
+    </p:panel>
+    </h:form>
+</h:body>
+</html>      
+   
