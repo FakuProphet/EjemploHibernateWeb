@@ -11,10 +11,10 @@
             <h:form id="form2">
                 <p:menu overlay="true" trigger="triggerButton" my="left top" at="right top">
 		<p:submenu label="Administrar">
-			<p:menuitem value="Nuevo Empleado"></p:menuitem>
-			<p:menuitem value="..."></p:menuitem>
+                        <p:menuitem action="nuevoEmpleado" value="Nuevo empleado"></p:menuitem>
+                        <p:menuitem action="listado" value="Listado empleados"></p:menuitem>
 			<p:separator/>
-			<p:menuitem value="Exit"></p:menuitem>
+			<p:menuitem  value="Exit"></p:menuitem>
 		</p:submenu>
                 </p:menu>
                 <p:commandButton id="triggerButton" value="Menu"></p:commandButton>
