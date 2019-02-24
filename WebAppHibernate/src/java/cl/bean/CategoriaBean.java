@@ -5,15 +5,17 @@
  */
 package cl.bean;
 
+import cl.dao.CategoriaDao;
 import cl.util.HibernateUtil;
 import d.pojos.Categoria;
+import imp.CategoriaDaoImp;
 import java.util.ArrayList;
 import java.util.List;
-import static javassist.CtMethod.ConstParameter.string;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,7 +32,10 @@ public class CategoriaBean {
 
     private Categoria categoria; 
     private List<Categoria> categorias;
-   
+    private List<SelectItem> listaCatCombo;
+    
+    
+    
     public CategoriaBean() {
         categoria = new Categoria();
         categorias = new ArrayList<>();
@@ -49,9 +54,25 @@ public class CategoriaBean {
         this.categorias = categorias;
     }
 
+    public List<SelectItem> getListaCatCombo() {
+        
+        this.listaCatCombo = new ArrayList<>();
+        CategoriaDao catDao = new CategoriaDaoImp();
+        List<Categoria> lc = catDao.listarCategorias();
+        listaCatCombo.clear();
+        
+        for(Categoria c: lc)
+        {
+            SelectItem catItem = new SelectItem(c.getCodigo(),c.getNombre());
+            listaCatCombo.add(catItem);
+        }
+        
+        return listaCatCombo;
+    }
+
   
     
-
+    
   
     
     
