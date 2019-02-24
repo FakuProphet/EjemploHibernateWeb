@@ -14,6 +14,7 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -58,10 +59,12 @@ public class CategoriaBean {
         
         SessionFactory miSF = HibernateUtil.getSessionFactory();
         Session sesion = miSF.openSession();
-        categorias = sesion.createQuery("From Categoria").list();
+        Query query = sesion.createQuery("From Categoria");
+        categorias = query.list();
+        
     }
 
-   
+    
     
     /*Otra forma de obtener la lista*/
     // List<Categoria> miLista2 = sesion.createCriteria(Categoria.class).list();
