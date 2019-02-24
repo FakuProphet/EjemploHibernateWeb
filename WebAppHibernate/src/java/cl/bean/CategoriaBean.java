@@ -9,6 +9,7 @@ import cl.util.HibernateUtil;
 import d.pojos.Categoria;
 import java.util.ArrayList;
 import java.util.List;
+import static javassist.CtMethod.ConstParameter.string;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
