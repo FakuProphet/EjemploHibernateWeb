@@ -9,20 +9,27 @@
     </h:head>
     <h:body>
             <h:form id="form2">
-                
+                <p:menu overlay="true" trigger="triggerButton" my="left top" at="right top">
+		<p:submenu label="Administrar">
+			<p:menuitem value="Nuevo Empleado"></p:menuitem>
+			<p:menuitem value="..."></p:menuitem>
+			<p:separator/>
+			<p:menuitem value="Exit"></p:menuitem>
+		</p:submenu>
+                </p:menu>
+                <p:commandButton id="triggerButton" value="Menu"></p:commandButton>
+                <p:separator/>
                 <p:dataTable  editable="true" value="#{cBean.listaCategorias}" var="c">
                 
                     <p:ajax event="rowEdit" listener="#{cBean.filaEvento}" update=":form2:msg"/>
                     
                     <p:column style="width: 5%">
-                     <p:selectBooleanCheckbox value="#{c.seleccionado}"/>
+                        <p:selectBooleanCheckbox value="#{c.seleccionado}"/>
                     </p:column>
                 
                     
                     <p:column headerText="CODIGO">
-                   
-                    <h:outputText value="#{c.codigo}"/>
-                    
+                        <h:outputText value="#{c.codigo}"/>
                     </p:column>
                     
                     
@@ -59,14 +66,14 @@
                 
                 <p:growl id="msg" showDetail="true" showSummary="true" />
             </h:form>
+            
             <h:form id="form1">
                 <p:panelGrid columns="1">
                     <h:outputText value="Nombre Categoria"/>
                     <p:inputText value="#{cBean.categoria.nombre}" required="true"/>
                   
                     <p:commandButton value="Guardar" update=":form1, :form2" 
-                                     icon="ui-icon-disk" actionListener="#{cBean.newCategoria()}"/>
-                    
+                                     icon="ui-icon-disk" actionListener="#{cBean.newCategoria()}"/>  
                 </p:panelGrid>
                 
             </h:form>
