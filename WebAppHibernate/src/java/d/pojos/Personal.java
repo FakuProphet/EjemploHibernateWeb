@@ -21,12 +21,23 @@ public class Personal  implements java.io.Serializable {
     public Personal() {
     }
 
+    
+    
     public Personal(Categoria categoria, String nombre, String apellido, int anioIngreso) {
        this.categoria = categoria;
        this.nombre = nombre;
        this.apellido = apellido;
        this.anioIngreso = anioIngreso;
     }
+
+    public Personal(Integer codigo, String nombre, String apellido, int anioIngreso) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.anioIngreso = anioIngreso;
+    }
+
+     
 
     public boolean isSeleccionado() {
         return seleccionado;

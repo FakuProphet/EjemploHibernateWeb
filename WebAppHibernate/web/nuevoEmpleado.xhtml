@@ -10,7 +10,7 @@
 </h:head>
 
 <h:body>
-    <h:form>
+    <h:form id="form1">
     <p:growl id="msgs" showDetail="true" /> 
     <p:panel header="ALTA DE EMPLEADO" style="margin-bottom:10px;">
         <h:panelGrid columns="1" cellpadding="5">
@@ -33,7 +33,7 @@
         <p:outputLabel value="categoria seleccionado id:"/>
         <p:outputLabel id="cSeleccionada" value="#{cBean.categoria.codigo}"/>
         <p:separator /> 
-        <p:commandButton value="Registrar"  icon="pi pi-check" />
+        <p:commandButton value="Registrar" update=":form1" icon="ui-icon-disk" actionListener="#{emplBean.newPersonal}" />
     </p:panel>
     </h:form>
 </h:body>
