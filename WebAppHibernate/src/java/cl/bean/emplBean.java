@@ -72,9 +72,20 @@ public class emplBean {
     
     public String newPersonal()
     {
-         
-       
-        return "index";
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction t = sesion.beginTransaction();
+        
+        
+        t.commit();
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Mensaje","Categoria ingresadaa");
+        /*agregando mensaje a nuestro ambito de aplicacion*/
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        categoria=null;
+        cargarListadoPersonal();
+        return "index";    
+        
     }
     
     
