@@ -37,6 +37,7 @@ public class emplBean {
         
         categoria = new Categoria();
         personal = new ArrayList<>();
+        p = new Personal();
         cargarListadoPersonal();
     }
 
@@ -76,10 +77,11 @@ public class emplBean {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
         Transaction t = sesion.beginTransaction();
-        
-        
+        CategoriaBean cb = new CategoriaBean();
+        Personal nuevo = new Personal(p.getCategoria().getCodigo(),p.getApellido(),p.getNombre(),p.getAnioIngreso());
+        sesion.saveOrUpdate(nuevo);
         t.commit();
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Mensaje","Categoria ingresadaa");
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Mensaje","Nuevo personal registrado");
         /*agregando mensaje a nuestro ambito de aplicacion*/
         FacesContext.getCurrentInstance().addMessage(null, msg);
         categoria=null;
