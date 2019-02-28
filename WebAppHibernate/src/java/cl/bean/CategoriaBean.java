@@ -83,7 +83,7 @@ public class CategoriaBean {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
         Transaction t = sesion.beginTransaction();
-        p.setCategoria(categoria);
+       
         Personal nuevo = new Personal(p.getCategoria().getCodigo(),p.getApellido(),p.getNombre(),p.getAnioIngreso());
         sesion.saveOrUpdate(nuevo);
         t.commit();
@@ -91,6 +91,7 @@ public class CategoriaBean {
         /*agregando mensaje a nuestro ambito de aplicacion*/
         FacesContext.getCurrentInstance().addMessage(null, msg);
         categoria=null;
+        p=null;
        // cargarListadoPersonal();
         return "index";    
         
