@@ -36,8 +36,15 @@ public class Personal  implements java.io.Serializable {
         this.apellido = apellido;
         this.anioIngreso = anioIngreso;
     }
-
-     
+    
+    
+    
+    public Personal(String nombre, String apellido, int anioIngreso, Categoria c) {
+        this.categoria = c;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.anioIngreso = anioIngreso;
+    }
 
     public boolean isSeleccionado() {
         return seleccionado;
