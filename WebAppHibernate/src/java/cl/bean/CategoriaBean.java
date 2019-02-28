@@ -83,8 +83,7 @@ public class CategoriaBean {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
         Transaction t = sesion.beginTransaction();
-       
-        Personal nuevo = new Personal(p.getCategoria().getCodigo(),p.getApellido(),p.getNombre(),p.getAnioIngreso());
+        Personal nuevo = new Personal(categoria.getCodigo(),p.getNombre(),p.getApellido(), p.getAnioIngreso());
         sesion.saveOrUpdate(nuevo);
         t.commit();
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Mensaje","Nuevo personal registrado");
