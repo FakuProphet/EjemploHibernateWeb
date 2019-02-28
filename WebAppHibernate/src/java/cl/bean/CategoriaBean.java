@@ -76,7 +76,8 @@ public class CategoriaBean {
     public void setPersonal(List<Personal> personal) {
         this.personal = personal;
     }
-    
+    /*NO ES LA UBICACION FINAL... CORRESPONDE LLEVAR EL METODO A UNA CLASE JAVA
+        BEAN DE PERSONAL*/
       public String newPersonal()
     {
         
