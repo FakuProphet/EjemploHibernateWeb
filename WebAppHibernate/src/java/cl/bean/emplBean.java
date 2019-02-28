@@ -77,7 +77,7 @@ public class emplBean {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
         Transaction t = sesion.beginTransaction();
-        CategoriaBean cb = new CategoriaBean();
+        p.setCategoria(categoria);        
         Personal nuevo = new Personal(p.getCategoria().getCodigo(),p.getApellido(),p.getNombre(),p.getAnioIngreso());
         sesion.saveOrUpdate(nuevo);
         t.commit();

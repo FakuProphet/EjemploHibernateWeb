@@ -15,14 +15,14 @@
     <p:panel header="ALTA DE EMPLEADO" style="margin-bottom:10px;">
         <h:panelGrid columns="1" cellpadding="5">
             <h:outputText value="Nombre"/>
-            <p:inputText value="jjjj" required="true"/>
+            <p:inputText value="#{cBean.p.nombre}" required="true"/>
             <h:outputText value="Apellido"/>
-            <p:inputText value="jjjjj" required="true"/>
+            <p:inputText value="#{cBean.p.apellido}" required="true"/>
             <h:outputText value="Anio Ingreso"/>
-            <p:inputText value="2010" required="true"/>
+            <p:inputText value="#{cBean.p.anioIngreso}" required="true"/>
             <p:outputLabel for="categoria" value="Categoria: " />
             
-            <p:selectOneMenu id="categoria" value="10" style="width:208px">
+            <p:selectOneMenu id="categoria" value="#{cBean.categoria.codigo}" style="width:208px">
                 <f:selectItem itemLabel="Seleccionar Categoria" itemValue="" noSelectionOption="true" />
                 <f:selectItems value="#{cBean.listaCatCombo}" />
                 <f:ajax execute="categoria" render="cSeleccionada"/>
@@ -33,7 +33,7 @@
         <p:outputLabel value="categoria seleccionado id:"/>
         <p:outputLabel id="cSeleccionada" value="#{cBean.categoria.codigo}"/>
         <p:separator /> 
-        <p:commandButton value="Registrar" update=":form1" icon="ui-icon-disk" actionListener="#{emplBean.newPersonal()}" />
+        <p:commandButton value="Registrar" update=":form1" icon="ui-icon-disk" actionListener="#{cBean.newPersonal()}" />
     </p:panel>
     </h:form>
 </h:body>

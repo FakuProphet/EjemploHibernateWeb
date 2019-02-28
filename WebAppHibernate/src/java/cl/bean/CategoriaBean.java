@@ -8,6 +8,7 @@ package cl.bean;
 import cl.dao.CategoriaDao;
 import cl.util.HibernateUtil;
 import d.pojos.Categoria;
+import d.pojos.Personal;
 import imp.CategoriaDaoImp;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +34,14 @@ public class CategoriaBean {
     private Categoria categoria; 
     private List<Categoria> categorias;
     private List<SelectItem> listaCatCombo;
-    
+    private List<Personal>  personal;
+    private Personal p;
     
     
     public CategoriaBean() {
         categoria = new Categoria();
         categorias = new ArrayList<>();
+        p = new Personal();
         cargarCategorias(); //Cuando se carga el form se carga la lista de categorias
     }
 
@@ -53,6 +56,51 @@ public class CategoriaBean {
     public void setCategorias(List<Categoria> categorias) {
         this.categorias = categorias;
     }
+    
+    
+     public Personal getP() {
+        return p;
+    }
+
+    public void setP(Personal p) {
+        this.p = p;
+    }
+
+    
+    
+    
+    public List<Personal> getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(List<Personal> personal) {
+        this.personal = personal;
+    }
+    
+      public String newPersonal()
+    {
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction t = sesion.beginTransaction();
+        p.setCategoria(categoria);
+        Personal nuevo = new Personal(p.getCategoria().getCodigo(),p.getApellido(),p.getNombre(),p.getAnioIngreso());
+        sesion.saveOrUpdate(nuevo);
+        t.commit();
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Mensaje","Nuevo personal registrado");
+        /*agregando mensaje a nuestro ambito de aplicacion*/
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        categoria=null;
+       // cargarListadoPersonal();
+        return "index";    
+        
+    }
+    
+    
+    
+    
+    
+    
 
     public List<SelectItem> getListaCatCombo() {
         
