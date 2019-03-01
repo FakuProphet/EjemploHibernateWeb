@@ -29,7 +29,7 @@ import org.primefaces.event.RowEditEvent;
  */
 @Named(value = "cBean")
 @RequestScoped
-public class CategoriaBean {
+public class empBean {
 
     private Categoria categoria; 
     private List<Categoria> categorias;
@@ -38,7 +38,7 @@ public class CategoriaBean {
     private Personal p;
     
     
-    public CategoriaBean() {
+    public empBean() {
         categoria = new Categoria();
         categorias = new ArrayList<>();
         p = new Personal();
@@ -76,8 +76,8 @@ public class CategoriaBean {
     public void setPersonal(List<Personal> personal) {
         this.personal = personal;
     }
-    /*NO ES LA UBICACION FINAL... CORRESPONDE LLEVAR EL METODO A UNA CLASE JAVA
-        BEAN DE PERSONAL*/
+   
+    
       public String newPersonal()
     {
         
@@ -92,7 +92,7 @@ public class CategoriaBean {
         FacesContext.getCurrentInstance().addMessage(null, msg);
         categoria=null;
         p=null;
-       // cargarListadoPersonal();
+        cargarCategorias();
         return "index";    
         
     }
